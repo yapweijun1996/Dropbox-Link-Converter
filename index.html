@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Dropbox Link Converter</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f4f4f4;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				margin: 0;
+			}
+			.container {
+				background: white;
+				padding: 20px;
+				border-radius: 5px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				width: 400px;
+				text-align: center;
+			}
+			textarea {
+				width: 100%;
+				height: 100px;
+				margin-bottom: 10px;
+				padding: 10px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				box-sizing: border-box;
+			}
+			button {
+				padding: 10px 15px;
+				background-color: #007bff;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: #0056b3;
+			}
+			.result {
+				margin-top: 20px;
+				word-wrap: break-word;
+			}
+			.result a {
+				color: #007bff;
+				text-decoration: none;
+			}
+			.result a:hover {
+				text-decoration: underline;
+			}
+			.toast {
+				display: none;
+				position: fixed;
+				bottom: 20px;
+				left: 50%;
+				transform: translateX(-50%);
+				background-color: #333;
+				color: #fff;
+				padding: 10px 20px;
+				border-radius: 5px;
+				z-index: 1000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Dropbox Link Converter</h1>
+			<textarea id="dropboxLink" placeholder="Enter your Dropbox link here..."></textarea>
+			<button id="convertButton">Convert</button>
+			<div id="result" class="result"></div>
+		</div>
+		<div id="toast" class="toast">Link copied!</div>
+		
+		<script>
+			document.getElementById('convertButton').addEventListener('click', function() {
+				const inputLink = document.getElementById('dropboxLink').value.trim();
+				const resultDiv = document.getElementById('result');
+				
+				if (inputLink) {
+					const convertedLink = inputLink.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
+					resultDiv.innerHTML = `
+					<a href="${convertedLink}" target="_blank">${convertedLink}</a><br><br>
+					<button class="download-link">Copy Link</button>
+					`;
+					
+					// Add click event to the download link
+					const downloadLink = resultDiv.querySelector('.download-link');
+					downloadLink.addEventListener('click', function(event) {
+						event.preventDefault(); // Prevent default link behavior
+						copyToClipboard(convertedLink);
+						showToast();
+					});
+				} else {
+					resultDiv.innerHTML = 'Please enter a valid Dropbox link.';
+				}
+			});
+			
+			function copyToClipboard(text) {
+				navigator.clipboard.writeText(text).then(() => {
+					console.log('Link copied to clipboard');
+				}, (err) => {
+					console.error('Could not copy text: ', err);
+				});
+			}
+			
+			function showToast() {
+				const toast = document.getElementById('toast');
+				toast.style.display = 'block';
+				setTimeout(() => {
+					toast.style.display = 'none';
+				}, 2000); // Toast will be visible for 2 seconds
+			}
+		</script>
+	</body>
+</html>
