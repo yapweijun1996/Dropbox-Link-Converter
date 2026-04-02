@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate PWA Icons</title></head>
+<body>
+<h2>PWA Icon Generator</h2>
+<p>Right-click each canvas and "Save image as..." to the icons/ folder.</p>
+<div>
+	<h3>icon-192.png</h3>
+	<canvas id="c192" width="192" height="192"></canvas>
+</div>
+<div>
+	<h3>icon-512.png</h3>
+	<canvas id="c512" width="512" height="512"></canvas>
+</div>
+<script>
+function drawIcon(canvas) {
+	const s = canvas.width;
+	const ctx = canvas.getContext('2d');
+
+	// Background
+	ctx.fillStyle = '#0061FF';
+	ctx.beginPath();
+	ctx.roundRect(0, 0, s, s, s * 0.18);
+	ctx.fill();
+
+	// Arrow down
+	const cx = s / 2;
+	const cy = s * 0.42;
+	const aw = s * 0.22;
+	const ah = s * 0.18;
+	ctx.fillStyle = '#ffffff';
+	ctx.beginPath();
+	ctx.moveTo(cx, cy + ah);
+	ctx.lineTo(cx - aw, cy - ah * 0.3);
+	ctx.lineTo(cx - aw * 0.4, cy - ah * 0.3);
+	ctx.lineTo(cx - aw * 0.4, cy - ah);
+	ctx.lineTo(cx + aw * 0.4, cy - ah);
+	ctx.lineTo(cx + aw * 0.4, cy - ah * 0.3);
+	ctx.lineTo(cx + aw, cy - ah * 0.3);
+	ctx.closePath();
+	ctx.fill();
+
+	// "DL" text
+	ctx.fillStyle = '#ffffff';
+	ctx.font = `bold ${s * 0.22}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+	ctx.textAlign = 'center';
+	ctx.textBaseline = 'middle';
+	ctx.fillText('DL', cx, s * 0.72);
+}
+drawIcon(document.getElementById('c192'));
+drawIcon(document.getElementById('c512'));
+</script>
+</body>
+</html>

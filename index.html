@@ -1,120 +1,1073 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="x-dns-prefetch-control" content="on">
+		<link rel="dns-prefetch" href="https://dl.dropboxusercontent.com">
+		<meta name="description" content="Convert Dropbox links to direct download links instantly. Simple, fast, and free.">
+		<meta name="robots" content="index, follow">
+		<meta name="author" content="YAP WEI JUN">
+		<link rel="canonical" href="https://yapweijun1996.github.io/Dropbox-Link-Converter/">
+		<link rel="alternate" hreflang="en" href="https://yapweijun1996.github.io/Dropbox-Link-Converter/">
+		<link rel="alternate" hreflang="zh" href="https://yapweijun1996.github.io/Dropbox-Link-Converter/?lang=zh">
+		<link rel="alternate" hreflang="ja" href="https://yapweijun1996.github.io/Dropbox-Link-Converter/?lang=ja">
+		<link rel="alternate" hreflang="ms" href="https://yapweijun1996.github.io/Dropbox-Link-Converter/?lang=ms">
+		<meta property="og:title" content="Dropbox Link Converter">
+		<meta property="og:description" content="Convert Dropbox links to direct download links instantly.">
+		<meta property="og:image" content="https://yapweijun1996.github.io/Dropbox-Link-Converter/og_img.jpg">
+		<meta property="og:url" content="https://yapweijun1996.github.io/Dropbox-Link-Converter/">
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="Dropbox Link Converter">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Dropbox Link Converter">
+		<meta name="twitter:description" content="Convert Dropbox links to direct download links instantly.">
+		<meta name="twitter:image" content="https://yapweijun1996.github.io/Dropbox-Link-Converter/og_img.jpg">
+		<meta name="theme-color" content="#0061FF">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="manifest" href="manifest.json">
+		<link rel="icon" type="image/svg+xml" href="icons/icon-192.svg">
+		<link rel="apple-touch-icon" href="icons/icon-192.svg">
 		<title>Dropbox Link Converter</title>
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": "Dropbox Link Converter",
+			"description": "Convert Dropbox links to direct download links instantly. Simple, fast, and free.",
+			"url": "https://yapweijun1996.github.io/Dropbox-Link-Converter/",
+			"applicationCategory": "UtilitiesApplication",
+			"operatingSystem": "All",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"author": {
+				"@type": "Person",
+				"name": "YAP WEI JUN"
+			},
+			"browserRequirements": "Requires JavaScript",
+			"softwareVersion": "1.0.0",
+			"screenshot": "https://yapweijun1996.github.io/Dropbox-Link-Converter/og_img.jpg"
+		}
+		</script>
 		<style>
-			body {
-				font-family: Arial, sans-serif;
-				background-color: #f4f4f4;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				height: 100vh;
-				margin: 0;
-			}
-			.container {
-				background: white;
-				padding: 20px;
-				border-radius: 5px;
-				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-				width: 400px;
-				text-align: center;
-			}
-			textarea {
-				width: 100%;
-				height: 100px;
-				margin-bottom: 10px;
-				padding: 10px;
-				border: 1px solid #ccc;
-				border-radius: 5px;
+			* {
 				box-sizing: border-box;
 			}
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				background-color: #f0f2f5;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				min-height: 100vh;
+				margin: 0;
+				padding: 40px 16px;
+				gap: 20px;
+			}
+			.card {
+				background: white;
+				padding: 30px;
+				border-radius: 12px;
+				box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+				max-width: 520px;
+				width: 100%;
+			}
+			.header-row {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 4px;
+			}
+			h1 {
+				font-size: 1.5rem;
+				color: #1e1e1e;
+				margin: 0;
+			}
+			h2 {
+				font-size: 1.1rem;
+				color: #1e1e1e;
+				margin: 0 0 16px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			h3 {
+				font-size: 0.95rem;
+				color: #1e1e1e;
+				margin: 0 0 12px;
+			}
+			.subtitle {
+				color: #6b7280;
+				font-size: 0.88rem;
+				margin: 0 0 24px;
+				text-align: center;
+			}
+			label {
+				display: block;
+				text-align: left;
+				font-weight: 600;
+				font-size: 0.85rem;
+				color: #374151;
+				margin-bottom: 6px;
+			}
+
+			/* Language switcher */
+			.lang-switcher {
+				display: flex;
+				gap: 4px;
+			}
+			.lang-btn {
+				padding: 4px 8px;
+				font-size: 0.75rem;
+				font-weight: 500;
+				font-family: inherit;
+				border-radius: 6px;
+				cursor: pointer;
+				border: 1px solid #d1d5db;
+				background: white;
+				color: #374151;
+				transition: background-color 0.15s;
+			}
+			.lang-btn:hover {
+				background-color: #f3f4f6;
+			}
+			.lang-btn.active {
+				background-color: #0061FF;
+				color: white;
+				border-color: #0061FF;
+			}
+
+			textarea {
+				width: 100%;
+				height: 90px;
+				margin-bottom: 14px;
+				padding: 10px 12px;
+				border: 1px solid #d1d5db;
+				border-radius: 8px;
+				font-family: inherit;
+				font-size: 0.9rem;
+				resize: vertical;
+				transition: border-color 0.2s, box-shadow 0.2s;
+			}
+			textarea:focus {
+				outline: none;
+				border-color: #0061FF;
+				box-shadow: 0 0 0 3px rgba(0, 97, 255, 0.12);
+			}
+			.button-row {
+				display: flex;
+				gap: 10px;
+				justify-content: center;
+			}
 			button {
-				padding: 10px 15px;
-				background-color: #007bff;
+				padding: 9px 18px;
+				font-size: 0.85rem;
+				font-weight: 500;
+				font-family: inherit;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: background-color 0.15s, box-shadow 0.15s;
+				white-space: nowrap;
+			}
+			button:focus-visible {
+				outline: 2px solid #0061FF;
+				outline-offset: 2px;
+			}
+			.btn-primary {
+				background-color: #0061FF;
 				color: white;
 				border: none;
-				border-radius: 5px;
-				cursor: pointer;
 			}
-			button:hover {
-				background-color: #0056b3;
+			.btn-primary:hover {
+				background-color: #004ecc;
+			}
+			.btn-primary:active {
+				background-color: #003da3;
+			}
+			.btn-secondary {
+				background-color: white;
+				color: #374151;
+				border: 1px solid #d1d5db;
+			}
+			.btn-secondary:hover {
+				background-color: #f3f4f6;
+			}
+			.btn-secondary:active {
+				background-color: #e5e7eb;
+			}
+			.btn-outline {
+				background-color: white;
+				color: #0061FF;
+				border: 1.5px solid #0061FF;
+			}
+			.btn-outline:hover {
+				background-color: #f0f6ff;
+			}
+			.btn-outline:active {
+				background-color: #dbeafe;
+			}
+			.btn-danger {
+				background: none;
+				border: none;
+				color: #9ca3af;
+				padding: 4px 8px;
+				font-size: 0.8rem;
+			}
+			.btn-danger:hover {
+				color: #dc3545;
+			}
+			.btn-icon {
+				background: none;
+				border: none;
+				color: #9ca3af;
+				padding: 4px;
+				font-size: 0.85rem;
+				line-height: 1;
+			}
+			.btn-icon:hover {
+				color: #374151;
 			}
 			.result {
 				margin-top: 20px;
 				word-wrap: break-word;
 			}
-			.result a {
-				color: #007bff;
-				text-decoration: none;
+			.result:empty {
+				margin-top: 0;
 			}
-			.result a:hover {
+			.result-box {
+				background-color: #f0f6ff;
+				border: 1px solid #bfdbfe;
+				border-radius: 8px;
+				padding: 12px 14px;
+				margin-bottom: 12px;
+				text-align: left;
+			}
+			.result-box a {
+				color: #0061FF;
+				text-decoration: none;
+				word-break: break-all;
+				font-size: 0.88rem;
+			}
+			.result-box a:hover {
 				text-decoration: underline;
 			}
-			.toast {
+			.result .button-row {
+				justify-content: flex-start;
+			}
+			.error-msg {
+				color: #dc3545;
+				font-size: 0.88rem;
+				font-weight: 500;
+				text-align: center;
+			}
+
+			/* How it works */
+			.steps {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				counter-reset: step;
+			}
+			.steps li {
+				counter-increment: step;
+				display: flex;
+				align-items: flex-start;
+				gap: 12px;
+				padding: 10px 0;
+				font-size: 0.88rem;
+				color: #374151;
+				line-height: 1.5;
+			}
+			.steps li + li {
+				border-top: 1px solid #f3f4f6;
+			}
+			.step-num {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 26px;
+				height: 26px;
+				min-width: 26px;
+				border-radius: 50%;
+				background-color: #0061FF;
+				color: white;
+				font-size: 0.75rem;
+				font-weight: 700;
+			}
+			.step-text strong {
+				display: block;
+				color: #1e1e1e;
+				margin-bottom: 2px;
+			}
+			.step-text span {
+				color: #6b7280;
+				font-size: 0.82rem;
+			}
+			.example-box {
+				margin-top: 16px;
+				padding: 12px 14px;
+				background: #f9fafb;
+				border: 1px solid #e5e7eb;
+				border-radius: 8px;
+				font-size: 0.8rem;
+				color: #6b7280;
+			}
+			.example-box code {
+				display: block;
+				word-break: break-all;
+				margin: 4px 0;
+				color: #374151;
+				font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+				font-size: 0.78rem;
+			}
+			.arrow-down {
+				text-align: center;
+				color: #0061FF;
+				font-size: 1.1rem;
+				margin: 2px 0;
+			}
+
+			/* History */
+			.history-card {
+				display: none;
+			}
+			.history-card.visible {
+				display: block;
+			}
+			.history-list {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			.history-item {
+				display: flex;
+				align-items: flex-start;
+				gap: 10px;
+				padding: 10px 12px;
+				background: #f9fafb;
+				border: 1px solid #e5e7eb;
+				border-radius: 8px;
+				transition: background-color 0.15s;
+			}
+			.history-item:hover {
+				background: #f3f4f6;
+			}
+			.history-item-content {
+				flex: 1;
+				min-width: 0;
+			}
+			.history-original {
+				font-size: 0.75rem;
+				color: #9ca3af;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				margin-bottom: 2px;
+			}
+			.history-converted a {
+				font-size: 0.85rem;
+				color: #0061FF;
+				text-decoration: none;
+				word-break: break-all;
+			}
+			.history-converted a:hover {
+				text-decoration: underline;
+			}
+			.history-time {
+				font-size: 0.7rem;
+				color: #b0b7c3;
+				margin-top: 3px;
+			}
+			.history-actions {
+				display: flex;
+				gap: 2px;
+				flex-shrink: 0;
+				padding-top: 2px;
+			}
+
+			/* Offline banner */
+			.offline-banner {
 				display: none;
 				position: fixed;
-				bottom: 20px;
+				top: 0;
+				left: 0;
+				right: 0;
+				background-color: #fbbf24;
+				color: #78350f;
+				text-align: center;
+				padding: 8px 16px;
+				font-size: 0.82rem;
+				font-weight: 500;
+				z-index: 1001;
+			}
+			.offline-banner.show {
+				display: block;
+			}
+
+			/* Small screens */
+			@media (max-width: 360px) {
+				body {
+					padding: 20px 10px;
+				}
+				.card {
+					padding: 20px 16px;
+				}
+				h1 {
+					font-size: 1.2rem;
+				}
+				.header-row {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 8px;
+				}
+				.lang-switcher {
+					align-self: flex-end;
+				}
+				textarea {
+					height: 70px;
+					font-size: 0.82rem;
+				}
+				button {
+					padding: 8px 14px;
+					font-size: 0.8rem;
+				}
+			}
+
+			/* Dark mode */
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: #111827;
+					color: #e5e7eb;
+				}
+				.card {
+					background: #1f2937;
+					box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+				}
+				h1, h2, h3 {
+					color: #f9fafb;
+				}
+				.subtitle {
+					color: #9ca3af;
+				}
+				label {
+					color: #d1d5db;
+				}
+				textarea {
+					background-color: #374151;
+					border-color: #4b5563;
+					color: #f9fafb;
+				}
+				textarea:focus {
+					border-color: #3b82f6;
+					box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+				}
+				textarea::placeholder {
+					color: #6b7280;
+				}
+				.lang-btn {
+					background: #374151;
+					color: #d1d5db;
+					border-color: #4b5563;
+				}
+				.lang-btn:hover {
+					background: #4b5563;
+				}
+				.lang-btn.active {
+					background-color: #0061FF;
+					color: white;
+					border-color: #0061FF;
+				}
+				.btn-secondary {
+					background-color: #374151;
+					color: #d1d5db;
+					border-color: #4b5563;
+				}
+				.btn-secondary:hover {
+					background-color: #4b5563;
+				}
+				.btn-outline {
+					background-color: #1f2937;
+					color: #60a5fa;
+					border-color: #60a5fa;
+				}
+				.btn-outline:hover {
+					background-color: #1e3a5f;
+				}
+				.btn-danger {
+					color: #6b7280;
+				}
+				.btn-danger:hover {
+					color: #f87171;
+				}
+				.btn-icon {
+					color: #6b7280;
+				}
+				.btn-icon:hover {
+					color: #d1d5db;
+				}
+				.result-box {
+					background-color: #1e3a5f;
+					border-color: #2563eb;
+				}
+				.result-box a {
+					color: #60a5fa;
+				}
+				.steps li {
+					color: #d1d5db;
+				}
+				.steps li + li {
+					border-color: #374151;
+				}
+				.step-text strong {
+					color: #f9fafb;
+				}
+				.step-text span {
+					color: #9ca3af;
+				}
+				.example-box {
+					background: #374151;
+					border-color: #4b5563;
+					color: #9ca3af;
+				}
+				.example-box code {
+					color: #d1d5db;
+				}
+				.history-item {
+					background: #374151;
+					border-color: #4b5563;
+				}
+				.history-item:hover {
+					background: #4b5563;
+				}
+				.history-original {
+					color: #6b7280;
+				}
+				.history-converted a {
+					color: #60a5fa;
+				}
+				.history-time {
+					color: #6b7280;
+				}
+				.error-msg {
+					color: #f87171;
+				}
+				.toast {
+					background-color: #f9fafb;
+					color: #111827;
+				}
+				.offline-banner {
+					background-color: #92400e;
+					color: #fef3c7;
+				}
+			}
+
+			/* Toast */
+			.toast {
+				position: fixed;
+				bottom: 24px;
 				left: 50%;
 				transform: translateX(-50%);
-				background-color: #333;
+				background-color: #1e1e1e;
 				color: #fff;
-				padding: 10px 20px;
-				border-radius: 5px;
+				padding: 10px 24px;
+				border-radius: 8px;
+				font-size: 0.85rem;
 				z-index: 1000;
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.3s ease;
+			}
+			.toast.show {
+				opacity: 1;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="container">
-			<h1>Dropbox Link Converter</h1>
-			<textarea id="dropboxLink" placeholder="Enter your Dropbox link here..."></textarea>
-			<button id="convertButton">Convert</button>
-			<div id="result" class="result"></div>
+		<!-- Converter -->
+		<div class="card">
+			<div class="header-row">
+				<h1 data-i18n="title">Dropbox Link Converter</h1>
+				<div class="lang-switcher">
+					<button class="lang-btn active" data-lang="en">EN</button>
+					<button class="lang-btn" data-lang="zh">中文</button>
+					<button class="lang-btn" data-lang="ja">日本語</button>
+					<button class="lang-btn" data-lang="ms">BM</button>
+				</div>
+			</div>
+			<p class="subtitle" data-i18n="subtitle">Convert Dropbox links to direct download links</p>
+			<label for="dropboxLink" data-i18n="label">Dropbox Link</label>
+			<textarea id="dropboxLink" data-i18n-placeholder="placeholder" placeholder="https://www.dropbox.com/s/..."></textarea>
+			<div class="button-row">
+				<button id="convertButton" class="btn-primary" data-i18n="convert">Convert</button>
+				<button id="clearButton" class="btn-secondary" data-i18n="clear">Clear</button>
+			</div>
+			<div id="result" class="result" aria-live="polite"></div>
 		</div>
+
+		<!-- How It Works -->
+		<div class="card">
+			<h3 data-i18n="howTitle">How It Works</h3>
+			<ol class="steps">
+				<li>
+					<span class="step-num">1</span>
+					<div class="step-text">
+						<strong data-i18n="step1Title">Paste your Dropbox link</strong>
+						<span data-i18n="step1Desc">Copy a shared link from Dropbox and paste it into the text area above.</span>
+					</div>
+				</li>
+				<li>
+					<span class="step-num">2</span>
+					<div class="step-text">
+						<strong data-i18n="step2Title">Click Convert</strong>
+						<span data-i18n="step2Desc">The tool replaces the domain from www.dropbox.com to dl.dropboxusercontent.com, which serves the file directly.</span>
+					</div>
+				</li>
+				<li>
+					<span class="step-num">3</span>
+					<div class="step-text">
+						<strong data-i18n="step3Title">Copy and share</strong>
+						<span data-i18n="step3Desc">Click "Copy Link" to copy the direct download link to your clipboard. Share it anywhere!</span>
+					</div>
+				</li>
+			</ol>
+			<div class="example-box">
+				<strong data-i18n="exampleLabel">Example:</strong>
+				<code>https://www.dropbox.com/s/abc123/file.zip?dl=0</code>
+				<div class="arrow-down">&darr;</div>
+				<code>https://dl.dropboxusercontent.com/s/abc123/file.zip</code>
+			</div>
+		</div>
+
+		<!-- History -->
+		<div id="historyCard" class="card history-card">
+			<h2>
+				<span data-i18n="history">History</span>
+				<button id="clearHistoryBtn" class="btn-danger" data-i18n="clearAll">Clear All</button>
+			</h2>
+			<ul id="historyList" class="history-list"></ul>
+		</div>
+
+		<div id="offlineBanner" class="offline-banner" data-i18n="offline">You are currently offline. Some features may be limited.</div>
 		<div id="toast" class="toast">Link copied!</div>
-		
+
 		<script>
-			document.getElementById('convertButton').addEventListener('click', function() {
-				const inputLink = document.getElementById('dropboxLink').value.trim();
-				const resultDiv = document.getElementById('result');
-				
-				if (inputLink) {
-					const convertedLink = inputLink.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
-					resultDiv.innerHTML = `
-					<a href="${convertedLink}" target="_blank">${convertedLink}</a><br><br>
-					<button class="download-link">Copy Link</button>
-					`;
-					
-					// Add click event to the download link
-					const downloadLink = resultDiv.querySelector('.download-link');
-					downloadLink.addEventListener('click', function(event) {
-						event.preventDefault(); // Prevent default link behavior
-						copyToClipboard(convertedLink);
-						showToast();
-					});
-				} else {
-					resultDiv.innerHTML = 'Please enter a valid Dropbox link.';
+			// ─── i18n ───
+			const I18N = {
+				en: {
+					title: 'Dropbox Link Converter',
+					subtitle: 'Convert Dropbox links to direct download links',
+					label: 'Dropbox Link',
+					placeholder: 'https://www.dropbox.com/s/...',
+					convert: 'Convert',
+					clear: 'Clear',
+					copyLink: 'Copy Link',
+					history: 'History',
+					clearAll: 'Clear All',
+					error: 'Please enter a valid Dropbox link.',
+					copied: 'Link copied!',
+					historyCleared: 'History cleared',
+					offline: 'You are currently offline. Some features may be limited.',
+					howTitle: 'How It Works',
+					step1Title: 'Paste your Dropbox link',
+					step1Desc: 'Copy a shared link from Dropbox and paste it into the text area above.',
+					step2Title: 'Click Convert',
+					step2Desc: 'The tool replaces the domain from www.dropbox.com to dl.dropboxusercontent.com, which serves the file directly.',
+					step3Title: 'Copy and share',
+					step3Desc: 'Click "Copy Link" to copy the direct download link to your clipboard. Share it anywhere!',
+					exampleLabel: 'Example:',
+					justNow: 'Just now',
+					mAgo: 'm ago',
+					hAgo: 'h ago'
+				},
+				zh: {
+					title: 'Dropbox 链接转换器',
+					subtitle: '将 Dropbox 链接转换为直接下载链接',
+					label: 'Dropbox 链接',
+					placeholder: 'https://www.dropbox.com/s/...',
+					convert: '转换',
+					clear: '清除',
+					copyLink: '复制链接',
+					history: '历史记录',
+					clearAll: '清除全部',
+					error: '请输入有效的 Dropbox 链接。',
+					copied: '链接已复制！',
+					historyCleared: '历史记录已清除',
+					offline: '您当前处于离线状态，部分功能可能受限。',
+					howTitle: '使用说明',
+					step1Title: '粘贴 Dropbox 链接',
+					step1Desc: '从 Dropbox 复制分享链接，粘贴到上方的文本框中。',
+					step2Title: '点击转换',
+					step2Desc: '工具会将域名从 www.dropbox.com 替换为 dl.dropboxusercontent.com，实现文件直接下载。',
+					step3Title: '复制并分享',
+					step3Desc: '点击"复制链接"将直接下载链接复制到剪贴板，随处分享！',
+					exampleLabel: '示例：',
+					justNow: '刚刚',
+					mAgo: '分钟前',
+					hAgo: '小时前'
+				},
+				ja: {
+					title: 'Dropbox リンク変換',
+					subtitle: 'Dropbox リンクをダイレクトダウンロードリンクに変換',
+					label: 'Dropbox リンク',
+					placeholder: 'https://www.dropbox.com/s/...',
+					convert: '変換',
+					clear: 'クリア',
+					copyLink: 'リンクをコピー',
+					history: '履歴',
+					clearAll: 'すべて削除',
+					error: '有効な Dropbox リンクを入力してください。',
+					copied: 'リンクをコピーしました！',
+					historyCleared: '履歴を削除しました',
+					offline: '現在オフラインです。一部の機能が制限される場合があります。',
+					howTitle: '使い方',
+					step1Title: 'Dropbox リンクを貼り付け',
+					step1Desc: 'Dropbox の共有リンクをコピーして、上のテキストエリアに貼り付けてください。',
+					step2Title: '変換をクリック',
+					step2Desc: 'ツールがドメインを www.dropbox.com から dl.dropboxusercontent.com に置き換え、ファイルを直接ダウンロードできるようにします。',
+					step3Title: 'コピーして共有',
+					step3Desc: '「リンクをコピー」をクリックしてダイレクトリンクをクリップボードにコピーし、どこでも共有できます！',
+					exampleLabel: '例：',
+					justNow: 'たった今',
+					mAgo: '分前',
+					hAgo: '時間前'
+				},
+				ms: {
+					title: 'Penukar Pautan Dropbox',
+					subtitle: 'Tukar pautan Dropbox kepada pautan muat turun terus',
+					label: 'Pautan Dropbox',
+					placeholder: 'https://www.dropbox.com/s/...',
+					convert: 'Tukar',
+					clear: 'Kosongkan',
+					copyLink: 'Salin Pautan',
+					history: 'Sejarah',
+					clearAll: 'Kosongkan Semua',
+					error: 'Sila masukkan pautan Dropbox yang sah.',
+					copied: 'Pautan disalin!',
+					historyCleared: 'Sejarah dikosongkan',
+					offline: 'Anda sedang di luar talian. Sesetengah ciri mungkin terhad.',
+					howTitle: 'Cara Penggunaan',
+					step1Title: 'Tampal pautan Dropbox anda',
+					step1Desc: 'Salin pautan kongsi dari Dropbox dan tampal ke dalam ruangan teks di atas.',
+					step2Title: 'Klik Tukar',
+					step2Desc: 'Alat ini menggantikan domain dari www.dropbox.com ke dl.dropboxusercontent.com, yang membolehkan muat turun terus.',
+					step3Title: 'Salin dan kongsi',
+					step3Desc: 'Klik "Salin Pautan" untuk menyalin pautan muat turun terus ke papan keratan anda. Kongsi di mana-mana!',
+					exampleLabel: 'Contoh:',
+					justNow: 'Baru sahaja',
+					mAgo: 'm lalu',
+					hAgo: 'j lalu'
 				}
-			});
-			
-			function copyToClipboard(text) {
-				navigator.clipboard.writeText(text).then(() => {
-					console.log('Link copied to clipboard');
-				}, (err) => {
-					console.error('Could not copy text: ', err);
+			};
+
+			let currentLang = 'en';
+
+			function t(key) {
+				return I18N[currentLang][key] || I18N.en[key] || key;
+			}
+
+			function applyLanguage(lang) {
+				currentLang = lang;
+				document.documentElement.lang = lang;
+				localStorage.setItem('lang', lang);
+
+				// Update all data-i18n elements
+				document.querySelectorAll('[data-i18n]').forEach((el) => {
+					el.textContent = t(el.dataset.i18n);
+				});
+
+				// Update placeholders
+				document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+					el.placeholder = t(el.dataset.i18nPlaceholder);
+				});
+
+				// Update active button
+				document.querySelectorAll('.lang-btn').forEach((btn) => {
+					btn.classList.toggle('active', btn.dataset.lang === lang);
+				});
+
+				// Re-render history with new time labels
+				renderHistory();
+			}
+
+			// ─── Constants ───
+			const DROPBOX_PATTERN = /^https?:\/\/(www\.)?dropbox\.com\/.+/i;
+			const DB_NAME = 'DropboxConverterDB';
+			const DB_VERSION = 1;
+			const STORE_NAME = 'history';
+
+			// ─── DOM refs ───
+			const dropboxInput = document.getElementById('dropboxLink');
+			const resultDiv = document.getElementById('result');
+			const historyCard = document.getElementById('historyCard');
+			const historyList = document.getElementById('historyList');
+
+			// ─── IndexedDB ───
+			function openDB() {
+				return new Promise((resolve, reject) => {
+					const request = indexedDB.open(DB_NAME, DB_VERSION);
+					request.onupgradeneeded = (e) => {
+						const db = e.target.result;
+						if (!db.objectStoreNames.contains(STORE_NAME)) {
+							const store = db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+							store.createIndex('timestamp', 'timestamp', { unique: false });
+						}
+					};
+					request.onsuccess = () => resolve(request.result);
+					request.onerror = () => reject(request.error);
 				});
 			}
-			
-			function showToast() {
-				const toast = document.getElementById('toast');
-				toast.style.display = 'block';
-				setTimeout(() => {
-					toast.style.display = 'none';
-				}, 2000); // Toast will be visible for 2 seconds
+
+			async function addHistory(original, converted) {
+				const db = await openDB();
+				return new Promise((resolve, reject) => {
+					const tx = db.transaction(STORE_NAME, 'readwrite');
+					tx.objectStore(STORE_NAME).add({
+						original,
+						converted,
+						timestamp: Date.now()
+					});
+					tx.oncomplete = () => { db.close(); resolve(); };
+					tx.onerror = () => { db.close(); reject(tx.error); };
+				});
 			}
+
+			async function getHistory() {
+				const db = await openDB();
+				return new Promise((resolve, reject) => {
+					const tx = db.transaction(STORE_NAME, 'readonly');
+					const request = tx.objectStore(STORE_NAME).index('timestamp').openCursor(null, 'prev');
+					const results = [];
+					request.onsuccess = (e) => {
+						const cursor = e.target.result;
+						if (cursor) {
+							results.push(cursor.value);
+							cursor.continue();
+						} else {
+							db.close();
+							resolve(results);
+						}
+					};
+					request.onerror = () => { db.close(); reject(request.error); };
+				});
+			}
+
+			async function deleteHistory(id) {
+				const db = await openDB();
+				return new Promise((resolve, reject) => {
+					const tx = db.transaction(STORE_NAME, 'readwrite');
+					tx.objectStore(STORE_NAME).delete(id);
+					tx.oncomplete = () => { db.close(); resolve(); };
+					tx.onerror = () => { db.close(); reject(tx.error); };
+				});
+			}
+
+			async function clearAllHistory() {
+				const db = await openDB();
+				return new Promise((resolve, reject) => {
+					const tx = db.transaction(STORE_NAME, 'readwrite');
+					tx.objectStore(STORE_NAME).clear();
+					tx.oncomplete = () => { db.close(); resolve(); };
+					tx.onerror = () => { db.close(); reject(tx.error); };
+				});
+			}
+
+			// ─── UI: render history ───
+			function formatTime(ts) {
+				const d = new Date(ts);
+				const now = new Date();
+				const diff = now - d;
+				if (diff < 60000) return t('justNow');
+				if (diff < 3600000) return Math.floor(diff / 60000) + t('mAgo');
+				if (diff < 86400000) return Math.floor(diff / 3600000) + t('hAgo');
+				return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: d.getFullYear() !== now.getFullYear() ? 'numeric' : undefined });
+			}
+
+			async function renderHistory() {
+				const items = await getHistory();
+				historyList.textContent = '';
+
+				if (items.length === 0) {
+					historyCard.classList.remove('visible');
+					return;
+				}
+
+				historyCard.classList.add('visible');
+
+				items.forEach((item) => {
+					const li = document.createElement('li');
+					li.className = 'history-item';
+
+					const content = document.createElement('div');
+					content.className = 'history-item-content';
+
+					const orig = document.createElement('div');
+					orig.className = 'history-original';
+					orig.textContent = item.original;
+
+					const conv = document.createElement('div');
+					conv.className = 'history-converted';
+					const convLink = document.createElement('a');
+					convLink.href = item.converted;
+					convLink.target = '_blank';
+					convLink.rel = 'noopener noreferrer';
+					convLink.textContent = item.converted;
+					conv.appendChild(convLink);
+
+					const time = document.createElement('div');
+					time.className = 'history-time';
+					time.textContent = formatTime(item.timestamp);
+
+					content.appendChild(orig);
+					content.appendChild(conv);
+					content.appendChild(time);
+
+					const actions = document.createElement('div');
+					actions.className = 'history-actions';
+
+					const copyBtn = document.createElement('button');
+					copyBtn.className = 'btn-icon';
+					copyBtn.title = t('copyLink');
+					copyBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+					copyBtn.addEventListener('click', () => {
+						copyToClipboard(item.converted);
+						showToast(t('copied'));
+					});
+
+					const delBtn = document.createElement('button');
+					delBtn.className = 'btn-icon';
+					delBtn.title = 'Remove';
+					delBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+					delBtn.addEventListener('click', async () => {
+						await deleteHistory(item.id);
+						renderHistory();
+					});
+
+					actions.appendChild(copyBtn);
+					actions.appendChild(delBtn);
+
+					li.appendChild(content);
+					li.appendChild(actions);
+					historyList.appendChild(li);
+				});
+			}
+
+			// ─── UI: show result ───
+			function showResult(convertedLink) {
+				resultDiv.textContent = '';
+
+				const resultBox = document.createElement('div');
+				resultBox.className = 'result-box';
+
+				const link = document.createElement('a');
+				link.href = convertedLink;
+				link.target = '_blank';
+				link.rel = 'noopener noreferrer';
+				link.textContent = convertedLink;
+				resultBox.appendChild(link);
+				resultDiv.appendChild(resultBox);
+
+				const row = document.createElement('div');
+				row.className = 'button-row';
+
+				const copyBtn = document.createElement('button');
+				copyBtn.textContent = t('copyLink');
+				copyBtn.className = 'btn-outline';
+				copyBtn.addEventListener('click', () => {
+					copyToClipboard(convertedLink);
+					showToast(t('copied'));
+				});
+				row.appendChild(copyBtn);
+				resultDiv.appendChild(row);
+			}
+
+			function showError(msg) {
+				resultDiv.textContent = '';
+				const p = document.createElement('p');
+				p.className = 'error-msg';
+				p.textContent = msg;
+				resultDiv.appendChild(p);
+			}
+
+			// ─── Utilities ───
+			function convertLink(input) {
+				return input
+					.replace(/^(https?:\/\/)(www\.)?dropbox\.com/, '$1dl.dropboxusercontent.com')
+					.replace(/[?&]dl=0/, '');
+			}
+
+			function copyToClipboard(text) {
+				navigator.clipboard.writeText(text).then(
+					() => console.log('Link copied'),
+					(err) => console.error('Copy failed:', err)
+				);
+			}
+
+			let toastTimer;
+			function showToast(msg) {
+				const toast = document.getElementById('toast');
+				toast.textContent = msg || t('copied');
+				toast.classList.add('show');
+				clearTimeout(toastTimer);
+				toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+			}
+
+			// ─── Events ───
+			document.getElementById('convertButton').addEventListener('click', async () => {
+				const inputLink = dropboxInput.value.trim();
+
+				if (!inputLink || !DROPBOX_PATTERN.test(inputLink)) {
+					showError(t('error'));
+					return;
+				}
+
+				const converted = convertLink(inputLink);
+				showResult(converted);
+
+				await addHistory(inputLink, converted);
+				renderHistory();
+			});
+
+			document.getElementById('clearButton').addEventListener('click', () => {
+				dropboxInput.value = '';
+				resultDiv.textContent = '';
+				dropboxInput.focus();
+			});
+
+			document.getElementById('clearHistoryBtn').addEventListener('click', async () => {
+				await clearAllHistory();
+				renderHistory();
+				showToast(t('historyCleared'));
+			});
+
+			// Language switcher
+			document.querySelectorAll('.lang-btn').forEach((btn) => {
+				btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+			});
+
+			// ─── Service Worker ───
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('./sw.js');
+			}
+
+			// ─── Offline detection ───
+			const offlineBanner = document.getElementById('offlineBanner');
+			function updateOnlineStatus() {
+				offlineBanner.classList.toggle('show', !navigator.onLine);
+			}
+			window.addEventListener('online', updateOnlineStatus);
+			window.addEventListener('offline', updateOnlineStatus);
+			updateOnlineStatus();
+
+			// ─── Init ───
+			const savedLang = localStorage.getItem('lang') || navigator.language.slice(0, 2);
+			applyLanguage(I18N[savedLang] ? savedLang : 'en');
 		</script>
 	</body>
 </html>

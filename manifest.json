@@ -1,0 +1,40 @@
+{
+	"name": "Dropbox Link Converter",
+	"short_name": "DL Converter",
+	"description": "Convert Dropbox links to direct download links instantly.",
+	"start_url": "./index.html",
+	"display": "standalone",
+	"background_color": "#f0f2f5",
+	"theme_color": "#0061FF",
+	"orientation": "any",
+	"categories": ["utilities", "productivity"],
+	"shortcuts": [
+		{
+			"name": "Convert Link",
+			"short_name": "Convert",
+			"description": "Open converter and paste a Dropbox link",
+			"url": "./index.html",
+			"icons": [
+				{
+					"src": "icons/icon-192.svg",
+					"sizes": "192x192",
+					"type": "image/svg+xml"
+				}
+			]
+		}
+	],
+	"icons": [
+		{
+			"src": "icons/icon-192.svg",
+			"sizes": "192x192",
+			"type": "image/svg+xml",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "icons/icon-512.svg",
+			"sizes": "512x512",
+			"type": "image/svg+xml",
+			"purpose": "any maskable"
+		}
+	]
+}
